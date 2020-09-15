@@ -9,6 +9,8 @@
 }
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap')
+
 .notosanskr * {
   font-family: "Noto Sans KR", sans-serif;
 }
@@ -33,7 +35,7 @@ header {
   flex-direction: row;
   width: 100%;
   height: 10%;
-  background-color: #092e20;
+  background-color: #ffcc99;
   color: white;
 }
 
@@ -41,7 +43,7 @@ header h1 {
   display: inline-block;
   padding: 10px;
   margin: 10px;
-  font-family: "CookieRunOTF-Bold";
+  font-family: 'Indie Flower', cursive;
 }
 header a {
   all: unset;
@@ -62,7 +64,7 @@ section {
 /* footer */
 
 footer {
-  background-color: #44b78b;
+  background-color: #fff2e6;
   width: 100%;
   display: flex;
   align-items: center;
@@ -71,14 +73,15 @@ footer {
 }
 footer p {
   font-size: 8pt;
-  color: #ebf0f1;
+  color: #c2c2d6;
 }
 
 /* 공통 요소 */
 
 h3 {
-  color: #0c4b33;
+  color: #ff884d;
   font-size: 2rem;
+  font-family: 'Indie Flower', cursive;
 }
 
 .date {
@@ -99,10 +102,13 @@ h3 {
   flex-basis: auto;
   word-break: break-all;
   margin: 1em;
+  font-family: 'Indie Flower', cursive;
+  
 }
 .home a {
   all: unset;
-  color: #0c4b33;
+  color:  #ff884d;
+  font-family: 'Indie Flower', cursive;
   font-size: 2rem;
   cursor: pointer;
 }
@@ -127,13 +133,13 @@ h3 {
 #id_title {
   font-size: 20px;
   align-items: center;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Indie Flower', cursive;
 }
 
 #id_body {
   font-size: 15px;
   align-items: center;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Indie Flower', cursive;
 }
 
 /* detail.html */
@@ -154,9 +160,10 @@ h3 {
   margin: 1rem;
   cursor: pointer;
   font-weight: bolder;
+  font-family: 'Indie Flower', cursive;
 }
 .btn a:hover {
-  color: #44b78b;
+  color: #ff884d;
 }
 
 .detail p {
@@ -169,18 +176,19 @@ form {
   display: flex;
   align-items: center;
   flex-direction: column;
+  font-family: 'Indie Flower', cursive;
 }
 
 input {
   background-color: white;
-  color: #44b78b;
-  border: 1px solid #44b78b;
+  color: #ffcc99;
+  border: 1px solid #ffcc99;
   border-radius: 5px;
   font-size: 12pt;
 }
 
 input:hover {
-  background-color: #44b78b;
+  background-color: #ff884d;
   color: white;
-  border: 1px solid #44b78b;
+  border: 1px solid #ff884d;
 }
