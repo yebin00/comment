@@ -1,5 +1,7 @@
-from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
 from . import views
+import blog.views
 
 urlpatterns = [
     path('create/', views.create, name='create'),
@@ -10,4 +12,9 @@ urlpatterns = [
     name='comment_update'),
     path('comment/delete/<int:pk>', views.comment_delete,
     name='comment_delete'),
+    path('admin/', admin.site.urls),
+    path('signup/', views.signup, name='signup'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
+    path('accounts/', include('allauth.urls')),
 ]
