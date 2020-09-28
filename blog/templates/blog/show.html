@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <title>Comment 기능 구현하기</title>
+  </head>
+  <body>
+    <header>
+      <a href="{% url 'home' %}"><h1>HOME</h1></a>
+      <a href="{% url 'login' %}"><h1>LOGIN</h1></a>
+      <a href="{% url 'signup'%}"><h1>SIGNUP</h1></a>
+      <a href="{% url 'show' %}"><h1>MAP</h1></a>
+
+      {% if request.user.is_authenticated %}
+      <a href="{% url 'create' %}"><h1>CREATE</h1></a>
+
+      <a href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+                    <form id="logout" method="POST" action="{% url 'logout' %}">
+                         {% csrf_token %} <input type="hidden" />
+                    </form>        
+      {%endif%}                         
+      <img class="dslion" src="{% static 'likelionds.png' %}" alt="" />
+    </header>
+    <section>{% block content %} {% endblock %}</section>
+
+    <div id="map" style="width:500px;height:400px;"></div>
+   
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=669b03bfd0750aada84cbf5a0e717021&libraries=services"></script>
+    <script>
+    var mapContainer = document.getElementById('map'),
+        mapOption = {
+           center: new kakao.maps.LatLng(33.450701, 126.570667),
+           level: 3
+    };
+
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+    var mapTypeControl = new kakao.maps.MapTypeControl();
+    map.addControl(mapTypeControl, kakao.maps.ControlPosition.
+    TOPRIGHT);
+
+    var zoomControl = new kakao.maps.ZoomControl();
+    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+    var geocoder = new kakao.maps.services.Geocoder();
+
+    geocoder.addressSearch('서울특별시 도봉구 삼양로 144길 33 덕성여자대학교', function(result, status) {
+
+
+        if (status === kakao.maps.services.Status.OK) {
+
+            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: coords
+            });
+
+            var infowindow = new kakao.maps.InfoWindow({
+                content: '<div style="width:150px;text-align:center;padding:6px 0;">덕성여대</div>'
+            });
+            infowindow.open(map, marker);
+
+            map.setCenter(coords);
+        }
+    });
+   
+    </script>    
+
+    <footer>
+      <p>Copyright ⓒ 2020 덕성여대 멋쟁이사자처럼 All rights reserved.</p>
+    </footer>
+  </body>
+</html>
+

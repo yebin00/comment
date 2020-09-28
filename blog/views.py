@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth
-from .models import Blog, Comment
+from .models import Blog, Comment, Board
 from .forms import BlogForm, CommentForm
+from django.utils import timezone
 
 
 
@@ -106,4 +107,8 @@ def logout(request):
     if request.method == 'POST':
        auth.logout(request)
        return redirect('home')
-    return render(request, 'signup.html')                
+    return render(request, 'signup.html')         
+
+def show(request):
+    boards = Board.objects.order_by('-id') #최신순정렬
+    return render(request, 'blog/show.html',{'boards':boards})           

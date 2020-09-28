@@ -3,6 +3,7 @@ from django.urls import path, include
 from . import views
 import blog.views
 
+
 urlpatterns = [
     path('create/', views.create, name='create'),
     path('<int:pk>/', views.detail, name='detail'),
@@ -17,4 +18,5 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('accounts/', include('allauth.urls')),
+    path('show/', views.show, name='show'),
 ]
